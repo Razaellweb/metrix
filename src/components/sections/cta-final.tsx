@@ -1,29 +1,42 @@
 import { Button } from "@/components/ui/button";
-import { Sparkles, ArrowRight } from "lucide-react";
+import { ArrowRight, Rocket } from "lucide-react";
 
 export default function CtaFinal() {
   return (
-    <section className="border-b bg-background py-20 lg:py-32">
-      <div className="container text-center">
-        <div className="mb-6 inline-flex items-center gap-2 rounded-full border bg-card px-4 py-2 shadow-sm">
-          <Sparkles className="size-4 text-primary" />
-          <span className="text-sm font-medium">Join the Future of Finance</span>
+    <section className="relative overflow-hidden bg-[#0f172a] py-24 lg:py-32">
+      {/* Background Effects */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl"></div>
+      </div>
+
+      <div className="container relative z-10 text-center">
+        <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 backdrop-blur-sm">
+          <Rocket className="size-4 text-blue-400" />
+          <span className="text-sm font-medium text-blue-100">Start shipping faster</span>
         </div>
-        <h2 className="mx-auto max-w-3xl text-3xl font-bold text-foreground lg:text-5xl" style={{ fontFamily: "var(--font-heading)" }}>
-          Join the Future of Finance
+        
+        <h2 className="mx-auto max-w-3xl text-4xl font-bold tracking-tight text-white lg:text-6xl mb-6">
+          Ready to monetize your API?
         </h2>
-        <p className="mx-auto mt-6 max-w-2xl text-body-lg text-foreground">
-          Finance should work for you, not the other way around.
-          <span className="block">Borrow smarter. Lend confidently. Grow together.</span>
+        
+        <p className="mx-auto max-w-2xl text-xl text-slate-400 mb-10">
+          Join thousands of developers building the next generation of usage-based software.
+          Start for free, scale as you grow.
         </p>
-        <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-          <Button className="h-12 rounded-xl bg-primary px-8 text-button font-medium shadow-sm hover:bg-primary/90 transition-colors">
-            Get Started Now →
-            <ArrowRight className="ml-2 size-4" />
+        
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button className="h-14 rounded-md bg-blue-600 px-8 text-lg font-medium text-white shadow-lg hover:bg-blue-500 transition-all">
+            Start Building for Free
+            <ArrowRight className="ml-2 size-5" />
+          </Button>
+          <Button variant="outline" className="h-14 rounded-md border-white/10 bg-transparent px-8 text-lg font-medium text-white hover:bg-white/10 hover:text-white transition-all">
+            Contact Sales
           </Button>
         </div>
-        <p className="mx-auto mt-6 text-sm text-muted-foreground">
-          24/7 Available Support  99.9% Platform Uptime  256-bit Bank-Grade Encryption
+        
+        <p className="mt-10 text-sm text-slate-500">
+          No credit card required for developer plan • SOC 2 Compliant • 99.99% SLA
         </p>
       </div>
     </section>

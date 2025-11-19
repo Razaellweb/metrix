@@ -4,82 +4,76 @@ import Image from "next/image";
 export default function Testimonials() {
   const testimonials = [
     {
-      name: "Adebayo Okonkwo",
-      role: "Small Business Owner",
-      location: "Lagos, Nigeria",
-      image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/9ad0e575-a6e7-47c2-96a4-5c6f723cc517-demo-v2-achromatic-dev/assets/images/philip_grant-3.webp",
-      quote: "YouFi gave me access to capital when traditional banks wouldn't. I borrowed ₦500K using my crypto savings as collateral and grew my business by 40%.",
+      name: "Sarah Jenkins",
+      role: "CTO",
+      company: "DataFlow AI",
+      image: "https://randomuser.me/api/portraits/women/44.jpg",
+      quote: "Metrix allowed us to switch from flat subscription to usage-based pricing in a week. Our revenue increased by 40% in the first month.",
     },
     {
-      name: "Jennifer Okafor",
-      role: "Crypto Investor",
-      location: "Abuja, Nigeria",
-      image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/9ad0e575-a6e7-47c2-96a4-5c6f723cc517-demo-v2-achromatic-dev/assets/images/victoria_ballard-4.webp",
-      quote: "As a lender, I've earned consistent returns while helping entrepreneurs. The platform's collateral security gives me complete peace of mind.",
+      name: "David Chen",
+      role: "Lead Engineer",
+      company: "CloudScale",
+      image: "https://randomuser.me/api/portraits/men/32.jpg",
+      quote: "The developer experience is unmatched. The SDKs are typed perfectly, and the dashboard gives us visibility we never had before.",
     },
     {
-      name: "Chukwudi Eze",
-      role: "Freelance Developer",
-      location: "Port Harcourt, Nigeria",
-      image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/9ad0e575-a6e7-47c2-96a4-5c6f723cc517-demo-v2-achromatic-dev/assets/images/gabriel_fischer-6.webp",
-      quote: "The instant matching system is incredible. I got my loan funded in under 2 hours. The mobile app makes managing everything seamless.",
-    },
-    {
-      name: "Amara Nwosu",
-      role: "E-commerce Entrepreneur",
-      location: "Enugu, Nigeria",
-      image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/9ad0e575-a6e7-47c2-96a4-5c6f723cc517-demo-v2-achromatic-dev/assets/images/sofia_muller-7.webp",
-      quote: "YouFi's transparent fee structure and competitive rates beat any other lending option I explored. Highly recommend for anyone with crypto assets.",
-    },
-    {
-      name: "Oluwaseun Adeleke",
-      role: "Tech Startup Founder",
-      location: "Ibadan, Nigeria",
-      image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/9ad0e575-a6e7-47c2-96a4-5c6f723cc517-demo-v2-achromatic-dev/assets/images/vivian_casey-5.webp",
-      quote: "The KYC process was smooth and the multi-chain wallet support is a game-changer. I can use USDC, USDT across different networks.",
+      name: "Elena Rodriguez",
+      role: "Product Manager",
+      company: "ApiGateway",
+      image: "https://randomuser.me/api/portraits/women/68.jpg",
+      quote: "We evaluated three other billing providers. Metrix was the only one that could handle our event volume without latency spikes.",
     },
   ];
 
   return (
-    <section className="border-b bg-background py-20 lg:py-32">
+    <section className="bg-slate-50 py-24 border-b">
       <div className="container">
-        <div className="mx-auto max-w-3xl text-center mb-16">
-          <h2 className="text-3xl lg:text-5xl font-semibold" style={{ fontFamily: "var(--font-heading)" }}>
-            What Our Users Say
+        <div className="text-center max-w-2xl mx-auto mb-16">
+          <h2 className="text-3xl font-bold tracking-tight mb-4">
+            Trusted by engineering teams
           </h2>
-          <p className="mt-4 text-body-lg text-muted-foreground">
-            Real experiences from borrowers and lenders in our beta community
+          <p className="text-lg text-muted-foreground">
+            See why high-growth SaaS companies choose Metrix for their billing infrastructure.
           </p>
         </div>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-8 md:grid-cols-3">
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="rounded-2xl border bg-card p-6 shadow-sm hover:shadow-md transition-shadow"
+              className="relative rounded-2xl bg-white p-8 shadow-sm border hover:shadow-md transition-shadow"
             >
-              <div className="flex gap-1 mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="size-4 fill-yellow-400 text-yellow-400" />
-                ))}
+              {/* Quote Icon */}
+              <div className="absolute top-6 right-8 text-9xl font-serif text-slate-100 leading-none select-none">
+                "
               </div>
+              
+              <div className="relative z-10">
+                <div className="flex gap-0.5 mb-6">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="size-4 fill-amber-400 text-amber-400" />
+                  ))}
+                </div>
 
-              <p className="text-body-md text-muted-foreground mb-6">
-                "{testimonial.quote}"
-              </p>
+                <p className="text-base text-slate-700 mb-8 leading-relaxed">
+                  "{testimonial.quote}"
+                </p>
 
-              <div className="flex items-center gap-3">
-                <Image
-                  src={testimonial.image}
-                  alt={testimonial.name}
-                  width={40}
-                  height={40}
-                  className="rounded-full"
-                />
-                <div>
-                  <div className="text-sm font-semibold">{testimonial.name}</div>
-                  <div className="text-xs text-muted-foreground">
-                    {testimonial.role} • {testimonial.location}
+                <div className="flex items-center gap-4">
+                  <div className="relative size-12 overflow-hidden rounded-full border bg-slate-100">
+                     {/* Using standard HTML img for reliable external loading if Next/Image is strict about domains */}
+                     <img 
+                       src={testimonial.image} 
+                       alt={testimonial.name}
+                       className="h-full w-full object-cover"
+                     />
+                  </div>
+                  <div>
+                    <div className="font-semibold text-foreground">{testimonial.name}</div>
+                    <div className="text-sm text-muted-foreground">
+                      {testimonial.role}, {testimonial.company}
+                    </div>
                   </div>
                 </div>
               </div>

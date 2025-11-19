@@ -1,63 +1,109 @@
-import { Wallet, UserPlus, Banknote, Clock } from "lucide-react";
+import { CheckCircle2, Server, Database, BarChart, Zap } from "lucide-react";
 
 export default function ProblemsSection() {
-  const benefits = [
+  // "Problems" section repurposed as "Technical Architecture" / "How it works" deep dive
+  // This fits the "Technical and precise" tone.
+
+  const steps = [
     {
-      icon: Wallet,
-      title: "No need to sell your crypto",
-      description: "Get cash while keeping your assets invested",
+      icon: Zap,
+      title: "1. Ingest Events",
+      description: "Send usage events via API or SDK. We handle high-throughput ingestion with idempotency guarantees.",
     },
     {
-      icon: UserPlus,
-      title: "Invite friends as guarantors",
-      description: "Don’t have enough collateral? Your trusted network can help.",
+      icon: Database,
+      title: "2. Aggregation",
+      description: "Metrix aggregates raw events into billable metrics (sum, max, unique count) in real-time.",
     },
     {
-      icon: Banknote,
-      title: "Quick cashouts in local currency",
-      description: "Convert your USD loan into Naira instantly via our secure P2P marketplace.",
+      icon: Server,
+      title: "3. Rating & Pricing",
+      description: "Apply pricing logic dynamically. Handle tiers, minimums, and complex formulas automatically.",
     },
     {
-      icon: Clock,
-      title: "Flexible tenors",
-      description: "Borrow from 1 day up to 180 days.",
+      icon: BarChart,
+      title: "4. Invoicing",
+      description: "Sync final amounts to Stripe for invoicing, or trigger webhooks for custom billing flows.",
     },
   ];
 
   return (
-    <section className="border-b bg-background py-20 lg:py-32">
+    <section className="bg-slate-50 py-24 border-b">
       <div className="container">
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl lg:text-5xl font-bold" style={{ fontFamily: "var(--font-heading)" }}>
-            Why YouFi?
-          </h2>
-          <p className="mt-3 text-body-lg text-muted-foreground">
-            Empowering financial freedom through peer-to-peer lending
-          </p>
-          <p className="mt-6 text-sm uppercase tracking-wide text-muted-foreground">For Borrowers:</p>
-        </div>
-
-        <div className="mt-12 grid gap-0 border-t lg:grid-cols-4">
-          {benefits.map((benefit) => {
-            const Icon = benefit.icon;
-            return (
-              <div
-                key={benefit.title}
-                className="border-b bg-card px-8 py-12 lg:border-b-0 lg:border-r last:border-b-0 last:border-r-0 hover:bg-accent transition-colors"
-                style={{ borderStyle: "dashed" }}
-              >
-                <div className="mb-7 flex size-12 items-center justify-center rounded-2xl border bg-background shadow-sm">
-                  <Icon className="size-6 text-primary" />
+        <div className="grid gap-12 lg:grid-cols-2 items-center">
+          
+          {/* Left: Diagram / Visual */}
+          <div className="relative rounded-2xl border bg-white p-8 shadow-sm">
+             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-t-2xl"></div>
+             <h3 className="font-mono text-sm font-semibold text-slate-500 mb-6">SYSTEM ARCHITECTURE</h3>
+             
+             <div className="space-y-4">
+                {/* Diagram Step 1 */}
+                <div className="flex items-center gap-4 p-3 rounded-lg border border-slate-100 bg-slate-50/50">
+                  <div className="size-8 rounded bg-blue-100 flex items-center justify-center text-blue-600 font-mono text-xs">API</div>
+                  <div className="h-px flex-1 bg-slate-300 relative">
+                     <div className="absolute right-0 -top-1 size-2 rounded-full bg-slate-300"></div>
+                  </div>
+                  <div className="px-3 py-1 rounded bg-white border text-xs font-mono text-slate-600">Kafka Buffer</div>
                 </div>
-                <h4 className="text-lg font-bold" style={{ fontFamily: "var(--font-heading)" }}>
-                  {benefit.title}
-                </h4>
-                <p className="mt-3 text-body-md text-muted-foreground">
-                  {benefit.description}
-                </p>
-              </div>
-            );
-          })}
+
+                {/* Diagram Step 2 */}
+                <div className="flex justify-center">
+                   <div className="h-6 w-px bg-slate-300"></div>
+                </div>
+
+                <div className="p-4 rounded-lg border border-blue-100 bg-blue-50/30 text-center">
+                   <p className="text-xs font-bold text-blue-700 mb-2">CORE ENGINE</p>
+                   <div className="grid grid-cols-2 gap-2">
+                      <div className="bg-white border p-2 rounded text-xs text-slate-600">Aggregation</div>
+                      <div className="bg-white border p-2 rounded text-xs text-slate-600">Rate Limiting</div>
+                   </div>
+                </div>
+
+                 {/* Diagram Step 3 */}
+                <div className="flex justify-center">
+                   <div className="h-6 w-px bg-slate-300"></div>
+                </div>
+
+                <div className="flex items-center gap-4 p-3 rounded-lg border border-slate-100 bg-slate-50/50">
+                  <div className="px-3 py-1 rounded bg-white border text-xs font-mono text-slate-600">PostgreSQL</div>
+                  <div className="h-px flex-1 bg-slate-300"></div>
+                  <div className="size-8 rounded bg-purple-100 flex items-center justify-center text-purple-600 font-mono text-xs">Web</div>
+                </div>
+             </div>
+          </div>
+
+          {/* Right: Steps Text */}
+          <div>
+            <h2 className="text-3xl font-bold tracking-tight mb-6">
+              Built for scale from day one
+            </h2>
+            <p className="text-lg text-muted-foreground mb-10">
+              Our architecture is designed to handle billions of events without missing a beat. Low latency, high availability, and perfect accuracy.
+            </p>
+
+            <div className="space-y-8">
+              {steps.map((step, index) => {
+                const Icon = step.icon;
+                return (
+                  <div key={index} className="flex gap-4">
+                    <div className="mt-1 flex size-10 shrink-0 items-center justify-center rounded-full bg-white border shadow-sm">
+                      <Icon className="size-5 text-primary" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-foreground">
+                        {step.title}
+                      </h4>
+                      <p className="mt-1 text-muted-foreground">
+                        {step.description}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
         </div>
       </div>
     </section>

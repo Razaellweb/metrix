@@ -1,112 +1,88 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Wallet, Twitter, Linkedin, Facebook, Instagram } from "lucide-react";
+import { BarChart3, Github, Twitter, Linkedin } from "lucide-react";
+import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="bg-background py-12 lg:py-16">
+    <footer className="bg-white pt-20 pb-10 border-t">
       <div className="container">
-        <div className="grid gap-8 lg:grid-cols-6">
+        <div className="grid gap-12 lg:grid-cols-6 mb-16">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="flex size-9 items-center justify-center rounded-xl bg-primary">
-                <Wallet className="size-5 text-primary-foreground" />
+            <div className="flex items-center gap-2 mb-6">
+              <div className="flex size-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
+                <BarChart3 className="size-5" />
               </div>
-              <span className="text-xl font-bold" style={{ fontFamily: "var(--font-heading)" }}>
-                YouFi
+              <span className="text-lg font-bold tracking-tight text-foreground">
+                Metrix
               </span>
             </div>
-            <p className="text-sm text-muted-foreground max-w-xs">
-              Finance Powered by You
+            <p className="text-sm text-muted-foreground max-w-xs leading-relaxed mb-6">
+              The scalable usage-based billing platform for modern SaaS and API companies.
             </p>
-          </div>
-
-          {/* Platform */}
-          <div>
-            <h4 className="font-semibold mb-4" style={{ fontFamily: "var(--font-heading)" }}>Platform</h4>
-            <ul className="space-y-2">
-              <li><a href="#" className="text-sm text-muted-foreground hover:text-foreground">How It Works</a></li>
-              <li><a href="#" className="text-sm text-muted-foreground hover:text-foreground">Borrow</a></li>
-              <li><a href="#" className="text-sm text-muted-foreground hover:text-foreground">Lend</a></li>
-              <li><a href="#" className="text-sm text-muted-foreground hover:text-foreground">Pricing</a></li>
-            </ul>
-          </div>
-
-          {/* Resources */}
-          <div>
-            <h4 className="font-semibold mb-4" style={{ fontFamily: "var(--font-heading)" }}>Resources</h4>
-            <ul className="space-y-2">
-              <li><a href="#" className="text-sm text-muted-foreground hover:text-foreground">Documentation</a></li>
-              <li><a href="#" className="text-sm text-muted-foreground hover:text-foreground">API Reference</a></li>
-              <li><a href="#" className="text-sm text-muted-foreground hover:text-foreground">Support</a></li>
-              <li><a href="#" className="text-sm text-muted-foreground hover:text-foreground">FAQ</a></li>
-            </ul>
-          </div>
-
-          {/* Company */}
-          <div>
-            <h4 className="font-semibold mb-4" style={{ fontFamily: "var(--font-heading)" }}>Company</h4>
-            <ul className="space-y-2">
-              <li><a href="#" className="text-sm text-muted-foreground hover:text-foreground">About</a></li>
-              <li><a href="#" className="text-sm text-muted-foreground hover:text-foreground">Blog</a></li>
-              <li><a href="#" className="text-sm text-muted-foreground hover:text-foreground">Careers</a></li>
-              <li><a href="#" className="text-sm text-muted-foreground hover:text-foreground">Contact</a></li>
-            </ul>
-          </div>
-
-          {/* Legal */}
-          <div>
-            <h4 className="font-semibold mb-4" style={{ fontFamily: "var(--font-heading)" }}>Legal</h4>
-            <ul className="space-y-2">
-              <li><a href="#" className="text-sm text-muted-foreground hover:text-foreground">Terms of Use</a></li>
-              <li><a href="#" className="text-sm text-muted-foreground hover:text-foreground">Privacy Policy</a></li>
-              <li><a href="#" className="text-sm text-muted-foreground hover:text-foreground">Cookie Policy</a></li>
-              <li><a href="#" className="text-sm text-muted-foreground hover:text-foreground">Compliance</a></li>
-            </ul>
-          </div>
-        </div>
-
-        {/* Newsletter */}
-        <div className="mt-12 border-t pt-8">
-          <div className="flex flex-col lg:flex-row gap-6 items-center justify-between">
-            <div className="max-w-md">
-              <h4 className="font-semibold mb-2" style={{ fontFamily: "var(--font-heading)" }}>Stay Updated</h4>
-              <p className="text-sm text-muted-foreground">
-                Get the latest updates on beta access and platform features.
-              </p>
+            <div className="flex gap-4">
+              <Link href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+                <Twitter className="size-5" />
+              </Link>
+              <Link href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+                <Github className="size-5" />
+              </Link>
+              <Link href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+                <Linkedin className="size-5" />
+              </Link>
             </div>
-            <div className="flex gap-2 w-full lg:w-auto">
-              <Input
-                type="email"
-                placeholder="Enter your email"
-                className="rounded-xl lg:w-64"
-              />
-              <Button className="rounded-xl bg-primary hover:bg-primary/90">
-                Subscribe
-              </Button>
-            </div>
+          </div>
+
+          {/* Links Columns */}
+          <div>
+            <h4 className="font-semibold text-sm text-foreground mb-6">Product</h4>
+            <ul className="space-y-3">
+              <li><Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">Features</Link></li>
+              <li><Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">Pricing</Link></li>
+              <li><Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">Integrations</Link></li>
+              <li><Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">Changelog</Link></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-sm text-foreground mb-6">Resources</h4>
+            <ul className="space-y-3">
+              <li><Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">Documentation</Link></li>
+              <li><Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">API Reference</Link></li>
+              <li><Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">Community</Link></li>
+              <li><Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">Help Center</Link></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-sm text-foreground mb-6">Company</h4>
+            <ul className="space-y-3">
+              <li><Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">About</Link></li>
+              <li><Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">Blog</Link></li>
+              <li><Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">Careers</Link></li>
+              <li><Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">Contact</Link></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-sm text-foreground mb-6">Legal</h4>
+            <ul className="space-y-3">
+              <li><Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">Privacy</Link></li>
+              <li><Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">Terms</Link></li>
+              <li><Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">Security</Link></li>
+            </ul>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-8 flex flex-col lg:flex-row gap-4 items-center justify-between border-t pt-8">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4 border-t pt-8">
           <p className="text-sm text-muted-foreground">
-            YouFi — Finance Powered by You
+            © {new Date().getFullYear()} Metrix Inc. All rights reserved.
           </p>
-          <div className="flex gap-4">
-            <a href="#" className="text-muted-foreground hover:text-foreground">
-              <Twitter className="size-5" />
-            </a>
-            <a href="#" className="text-muted-foreground hover:text-foreground">
-              <Linkedin className="size-5" />
-            </a>
-            <a href="#" className="text-muted-foreground hover:text-foreground">
-              <Facebook className="size-5" />
-            </a>
-            <a href="#" className="text-muted-foreground hover:text-foreground">
-              <Instagram className="size-5" />
-            </a>
+          <div className="flex items-center gap-2">
+             <div className="size-2 rounded-full bg-green-500"></div>
+             <span className="text-sm font-medium text-muted-foreground">All systems operational</span>
           </div>
         </div>
       </div>

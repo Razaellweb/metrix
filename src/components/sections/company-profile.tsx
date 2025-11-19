@@ -1,54 +1,82 @@
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, Terminal, Code, Laptop, Box } from "lucide-react";
 
 export default function CompanyProfile() {
   const features = [
-    "🛡️ Smart-Contract Security — Your funds are secured, and collaterals are held in audited smart contracts for maximum safety.",
-    "⚡ Fast Disbursements — Get funded in minutes not days.",
-    "🌍 Borderless Finance — Borrow, lend, support friends and family or earn globally, all from one app.",
-    "💸 Transparent Yields — No hidden fees. No surprises.",
-    "🤖 Quote AI Agent — Get matched faster with fair rate suggestions.",
-    "💱 FX Market Place — Trade dollars ↔️ naira, peer-to-peer, with zero fees.",
+    "Node.js SDK",
+    "Python SDK",
+    "Go SDK",
+    "Ruby SDK",
+    "React Components",
+    "REST API"
   ];
 
   return (
-    <section className="border-b bg-background py-20 lg:py-32">
+    <section className="border-b bg-white py-24">
       <div className="container">
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
-          {/* Left: Image Placeholder */}
-          <div className="rounded-2xl border bg-gradient-to-br from-primary/10 to-primary/5 p-12 lg:p-16">
-            <div className="aspect-square rounded-xl bg-background/50 backdrop-blur-sm border flex items-center justify-center">
-              <div className="text-center">
-                <div className="mx-auto mb-4 flex size-16 items-center justify-center rounded-2xl bg-primary">
-                  <CheckCircle2 className="size-8 text-primary-foreground" />
-                </div>
-                <h3 className="text-2xl font-bold" style={{ fontFamily: "var(--font-heading)" }}>
-                  Secure & Verified
-                </h3>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  Built with security at its core
-                </p>
-              </div>
+        <div className="grid gap-12 lg:grid-cols-2 lg:gap-20 items-center">
+          
+          {/* Left: Content */}
+          <div className="order-2 lg:order-1">
+            <div className="inline-flex items-center gap-2 rounded-full bg-blue-50 px-3 py-1 text-xs font-medium text-blue-700 mb-6">
+              <Terminal className="size-3" />
+              Developer Experience
             </div>
-          </div>
-
-          {/* Right: Content */}
-          <div>
-            <h2 className="text-3xl lg:text-5xl font-semibold" style={{ fontFamily: "var(--font-heading)" }}>
-              Why Trust YouFi?
+            
+            <h2 className="text-3xl font-bold tracking-tight mb-6">
+              Integrate in minutes, not months
             </h2>
-            <p className="mt-4 text-body-lg text-muted-foreground">
-              Built with security, transparency and user experience at its core
+            <p className="text-lg text-muted-foreground mb-8">
+              We provide first-class SDKs for every major language. Our typed libraries ensure you catch errors at compile time, not runtime.
             </p>
 
-            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+            <div className="grid grid-cols-2 gap-4">
               {features.map((feature, index) => (
-                <div key={index} className="flex items-start gap-3">
-                  <CheckCircle2 className="size-5 text-primary shrink-0 mt-0.5" />
-                  <span className="text-body-md">{feature}</span>
+                <div key={index} className="flex items-center gap-3 p-3 rounded-lg border bg-slate-50/50">
+                  <Code className="size-4 text-slate-500" />
+                  <span className="text-sm font-medium text-slate-700">{feature}</span>
                 </div>
               ))}
             </div>
+            
+             <div className="mt-8 p-4 border-l-4 border-blue-500 bg-blue-50 rounded-r-lg">
+               <p className="text-sm text-blue-900 italic">
+                 "Metrix's SDKs are the best we've worked with. Dropped it in, and we were metering events in production the same afternoon."
+               </p>
+               <p className="mt-2 text-xs font-bold text-blue-700">— CTO, SaaS Unicorn</p>
+             </div>
           </div>
+
+          {/* Right: Code Snippet Visual */}
+          <div className="order-1 lg:order-2 rounded-xl border bg-[#1e1e1e] shadow-2xl overflow-hidden">
+            <div className="flex items-center justify-between bg-[#252526] px-4 py-2 border-b border-[#3e3e42]">
+              <span className="text-xs text-slate-400">install.sh</span>
+              <div className="flex gap-1.5">
+                <div className="size-2.5 rounded-full bg-[#ff5f56]"></div>
+                <div className="size-2.5 rounded-full bg-[#ffbd2e]"></div>
+                <div className="size-2.5 rounded-full bg-[#27c93f]"></div>
+              </div>
+            </div>
+            <div className="p-6 font-mono text-sm">
+               <div className="flex gap-2 text-emerald-400 mb-4">
+                 <span>$</span>
+                 <span className="text-white">npm install @metrix/node</span>
+               </div>
+               
+               <div className="text-slate-500 mb-2">// In your API route</div>
+               <div className="text-blue-400">import</div> <span className="text-white">{'{'} Metrix {'}'}</span> <div className="text-blue-400 inline">from</div> <span className="text-orange-300">'@metrix/node'</span>;
+               <br/><br/>
+               <div className="text-purple-400">const</div> <span className="text-white">client</span> = <div className="text-purple-400 inline">new</div> <span className="text-yellow-300">Metrix</span>(<span className="text-orange-300">'api_key_...'</span>);
+               <br/><br/>
+               <div className="text-purple-400">await</div> <span className="text-white">client.ingest</span>({'{'}
+               <br/>
+               &nbsp;&nbsp;<span className="text-sky-300">event</span>: <span className="text-orange-300">'ai_generation'</span>,
+               <br/>
+               &nbsp;&nbsp;<span className="text-sky-300">properties</span>: {'{'} <span className="text-sky-300">tokens</span>: <span className="text-green-300">450</span> {'}'}
+               <br/>
+               {'}'});
+            </div>
+          </div>
+
         </div>
       </div>
     </section>

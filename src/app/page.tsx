@@ -18,8 +18,10 @@ export default function Home() {
       <main>
         <HeroSection />
         <TrustedBy />
-        <ProblemsSection />
         <FeaturesShowcase />
+        {/* ProblemsSection reused as Architecture Diagram */}
+        <ProblemsSection /> 
+        {/* CompanyProfile reused as Developer Experience */}
         <CompanyProfile />
         <Stats />
         <Testimonials />

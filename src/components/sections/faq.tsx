@@ -10,63 +10,51 @@ import {
 export default function FaqSection() {
   const faqs = [
     {
-      question: "What is YouFi and how does it work?",
-      answer: "YouFi is a peer-to-peer lending marketplace that connects crypto holders with borrowers in emerging markets. Borrowers secure loans by depositing crypto collateral (USDC/USDT), and loans are disbursed in USDC or Naira.",
+      question: "How does Metrix handle high-volume event ingestion?",
+      answer: "Metrix uses a distributed Kafka-based architecture to ingest events. We support millions of events per second with exactly-once processing guarantees, ensuring your billing data is always accurate.",
     },
     {
-      question: "What are the loan terms and interest rates?",
-      answer: "Loans can be up to 30 days with interest rates up to 12.5% monthly. Borrowers specify their desired amount, tenor, and interest rate, which are then matched with lenders on the platform.",
+      question: "Can I migrate my existing Stripe subscriptions?",
+      answer: "Yes. Metrix integrates natively with Stripe. You can import existing customers and subscriptions, then switch them to usage-based plans without disrupting their service.",
     },
     {
-      question: "How is my collateral protected?",
-      answer: "All collateral is held in secure custodial escrow with 135% initial LTV. Real-time price feeds monitor collateral health, and automated liquidation triggers at 115% LTV to protect lenders.",
+      question: "What SDKs do you offer?",
+      answer: "We currently offer official SDKs for Node.js, Python, Go, and Ruby. For other languages, you can use our REST API directly. All our libraries are fully typed and open source.",
     },
     {
-      question: "What are the KYC requirements?",
-      answer: "Tier 1 (Basic) requires BVN, phone, email, and selfie verification for up to ₦1M/$500 borrowing. Tier 2 (Full) adds ID and proof of address for up to ₦5M/$2,500 and enables lending privileges.",
+      question: "Do you handle tax calculation?",
+      answer: "Yes, we integrate with major tax providers to automatically calculate and add VAT, GST, and sales tax to invoices based on your customer's location.",
     },
     {
-      question: "How do withdrawals work?",
-      answer: "Withdrawals have ₦1,000/$10 minimums with 0.001% (USD) or ₦60 (NGN) fees. Amounts over ₦1M require admin 2FA verification. NGN uses Providus Bank virtual accounts, crypto uses multi-chain wallets.",
-    },
-    {
-      question: "What happens if I can't repay on time?",
-      answer: "There's a 5-day grace period after the due date. If not repaid within this period or if LTV drops to 115%, collateral is liquidated with a 5% fee. Proceeds repay the lender, and any remainder goes to you.",
-    },
-    {
-      question: "What fees does YouFi charge?",
-      answer: "Borrowers pay a 1.25% origination fee. Lenders have a 27.5% performance fee on earnings. The platform charges ₦1,000 flat fee per loan. There's also a 5% fee on liquidations.",
+      question: "Is my data secure?",
+      answer: "Absolutely. We are SOC 2 Type II compliant. All data is encrypted at rest and in transit. We never store raw credit card information; that remains with your payment processor.",
     },
   ];
 
   return (
-    <section className="border-b bg-background py-20 lg:py-32">
-      <div className="container">
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
-          <div>
-            <h2 className="text-3xl lg:text-5xl font-semibold" style={{ fontFamily: "var(--font-heading)" }}>
-              Frequently Asked Questions
-            </h2>
-            <p className="mt-4 text-body-lg text-muted-foreground">
-              Can't find what you're looking for? Contact our support team at support@youfi.app
-            </p>
-          </div>
-
-          <div>
-            <Accordion type="single" collapsible className="w-full">
-              {faqs.map((faq, index) => (
-                <AccordionItem key={index} value={`item-${index}`}>
-                  <AccordionTrigger className="text-left">
-                    {faq.question}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground">
-                    {faq.answer}
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </div>
+    <section className="bg-white py-24 border-b">
+      <div className="container max-w-4xl">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl font-bold tracking-tight mb-4">
+            Frequently Asked Questions
+          </h2>
+          <p className="text-lg text-muted-foreground">
+            Everything you need to know about the Metrix platform.
+          </p>
         </div>
+
+        <Accordion type="single" collapsible className="w-full">
+          {faqs.map((faq, index) => (
+            <AccordionItem key={index} value={`item-${index}`} className="border-b border-slate-200">
+              <AccordionTrigger className="text-left text-base font-medium hover:text-primary hover:no-underline py-6">
+                {faq.question}
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground pb-6 leading-relaxed">
+                {faq.answer}
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
       </div>
     </section>
   );

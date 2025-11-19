@@ -1,66 +1,54 @@
-/* Updated: 2025-11-07T08:33:44.966Z */
-/* Updated: 2025-11-03T12:02:16.786Z */
-/* Updated: 2025-10-30T16:34:37.730Z */
-/* Updated: 2025-10-30T16:04:16.813Z */
-/* Updated: 2025-10-30T09:31:01.040Z */
-/* Updated: 2025-10-30T09:29:30.474Z */
-/* Updated: 2025-10-30T06:38:35.443Z */
-/* Updated: 2025-10-30T06:12:49.691Z */
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  /* Shadcn/UI colors - Clean & Professional */
-  --color-background: #FFF9F0;
-  --color-foreground: #1a1a2e;
+  /* Metrix Identity - Technical, Clean, Trustworthy */
+  --color-background: #ffffff;
+  --color-foreground: #0f172a; /* Slate 900 */
 
   --color-card: #ffffff;
-  --color-card-foreground: #1a1a2e;
+  --color-card-foreground: #0f172a;
 
   --color-popover: #ffffff;
-  --color-popover-foreground: #1a1a2e;
+  --color-popover-foreground: #0f172a;
 
-  --color-primary: #2563eb;
+  --color-primary: #2563eb; /* Blue 600 */
   --color-primary-foreground: #ffffff;
 
-  --color-secondary: #f3f4f6;
-  --color-secondary-foreground: #1f2937;
+  --color-secondary: #f1f5f9; /* Slate 100 */
+  --color-secondary-foreground: #0f172a;
 
-  --color-muted: #f3f4f6;
-  --color-muted-foreground: #6b7280;
+  --color-muted: #f8fafc; /* Slate 50 */
+  --color-muted-foreground: #64748b; /* Slate 500 */
 
-  --color-accent: #dbeafe;
-  --color-accent-foreground: #1e40af;
+  --color-accent: #f1f5f9; /* Slate 100 */
+  --color-accent-foreground: #0f172a;
 
-  --color-destructive: #f43f5e;
-  --color-destructive-foreground: #fafafa;
+  --color-destructive: #ef4444;
+  --color-destructive-foreground: #ffffff;
 
-  --color-border: #e5e7eb;
-  --color-input: #e5e7eb;
+  --color-border: #e2e8f0; /* Slate 200 */
+  --color-input: #e2e8f0;
   --color-ring: #2563eb;
 
-  --color-chart-1: #2563eb;
-  --color-chart-2: #06b6d4;
-  --color-chart-3: #f59e0b;
-  --color-chart-4: #ec4899;
-  --color-chart-5: #10b981;
+  /* Charting Colors for Dashboards */
+  --color-chart-1: #2563eb; /* Blue */
+  --color-chart-2: #0ea5e9; /* Sky */
+  --color-chart-3: #6366f1; /* Indigo */
+  --color-chart-4: #8b5cf6; /* Violet */
+  --color-chart-5: #10b981; /* Emerald */
 
-  --color-sidebar: #f9fafb;
-  --color-sidebar-foreground: #374151;
-  --color-sidebar-primary: #2563eb;
-  --color-sidebar-primary-foreground: #ffffff;
-  --color-sidebar-accent: #dbeafe;
-  --color-sidebar-accent-foreground: #1e40af;
-  --color-sidebar-border: #e5e7eb;
-  --color-sidebar-ring: #2563eb;
-
-  --radius-lg: 1.25rem; /* 20px - More rounded */
-  --radius-md: 1rem; /* 16px */
-  --radius-sm: 0.75rem; /* 12px */
+  --radius-lg: 0.75rem; /* 12px - Sharper, more technical */
+  --radius-md: 0.5rem; /* 8px */
+  --radius-sm: 0.25rem; /* 4px */
   --radius-full: 9999px;
+
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-heading: "Inter", sans-serif; /* Unified font family for cleaner look */
 
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
@@ -81,46 +69,15 @@
       height: 0;
     }
   }
-
-  /* Custom Design Tokens - Clean Palette */
-  --color-primary-blue: #2563eb;
-  --color-primary-blue-hover: #1d4ed8;
-  --color-blue-light: #dbeafe;
-  --color-warm-bg: #FFF9F0;
-  --color-warm-accent: #FEF3C7;
-  --color-cyan: #06b6d4;
-  --color-cyan-light: #67e8f9;
-  --color-pink: #ec4899;
-  --color-pink-light: #f9a8d4;
-  --color-orange: #f59e0b;
-  --color-orange-light: #fbbf24;
-  --color-green: #10b981;
-  --color-green-light: #34d399;
-  --color-success-green: #10b981;
-  --color-teal: #14b8a6;
-  --color-star-rating: #fbbf24;
-  --color-shadow-card: rgba(37, 99, 235, 0.08);
-  --color-shadow-button: rgba(37, 99, 235, 0.2);
-
-  --font-sans: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-heading: "Space Grotesk", "DM Sans", sans-serif;
 }
 
-/*
-  The default border color has changed to currentColor in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
 @layer base {
   *,
   ::after,
   ::before,
   ::backdrop,
   ::file-selector-button {
-    border-color: #e5e5e5;
+    border-color: #e2e8f0;
   }
 }
 
@@ -128,43 +85,33 @@
   body {
     font-family: var(--font-sans);
   }
+  .font-mono {
+    font-family: var(--font-mono);
+  }
 }
 
 @layer base {
   :root {
-    --background: #FFF9F0;
-    --foreground: #1a1a2e;
+    --background: #ffffff;
+    --foreground: #0f172a;
     --card: #ffffff;
-    --card-foreground: #1a1a2e;
+    --card-foreground: #0f172a;
     --popover: #ffffff;
-    --popover-foreground: #1a1a2e;
+    --popover-foreground: #0f172a;
     --primary: #2563eb;
     --primary-foreground: #ffffff;
-    --secondary: #f3f4f6;
-    --secondary-foreground: #1f2937;
-    --muted: #f3f4f6;
-    --muted-foreground: #6b7280;
-    --accent: #dbeafe;
-    --accent-foreground: #1e40af;
-    --destructive: #f43f5e;
-    --destructive-foreground: #fafafa;
-    --border: #e5e5e5;
-    --input: #e5e5e5;
+    --secondary: #f1f5f9;
+    --secondary-foreground: #0f172a;
+    --muted: #f8fafc;
+    --muted-foreground: #64748b;
+    --accent: #f1f5f9;
+    --accent-foreground: #0f172a;
+    --destructive: #ef4444;
+    --destructive-foreground: #ffffff;
+    --border: #e2e8f0;
+    --input: #e2e8f0;
     --ring: #2563eb;
-    --chart-1: #2563eb;
-    --chart-2: #06b6d4;
-    --chart-3: #f59e0b;
-    --chart-4: #ec4899;
-    --chart-5: #10b981;
-    --radius: 1.25rem; /* Matches --radius-lg */
-    --sidebar-background: #f7f7f7;
-    --sidebar-foreground: #404040;
-    --sidebar-primary: #1a1a1a;
-    --sidebar-primary-foreground: #fafafa;
-    --sidebar-accent: #f0f0f0;
-    --sidebar-accent-foreground: #1a1a1a;
-    --sidebar-border: #d4d4d8;
-    --sidebar-ring: #2563eb;
+    --radius: 0.5rem;
   }
 
   html {
@@ -178,19 +125,20 @@
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    color: var(--foreground);
+    background-color: var(--background);
   }
 
   h1 {
-    font-size: 4.75rem; /* 76px */
+    font-size: 4rem; /* 64px */
     font-weight: 700;
-    line-height: 4.625rem; /* 74px */
-    letter-spacing: -0.05em; /* -2px */
-    font-kerning: none;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
     text-wrap: balance;
   }
 
   h2 {
-    font-size: 3rem; /* 48px */
+    font-size: 2.5rem; /* 40px */
     font-weight: 600;
     line-height: 1.2;
     letter-spacing: -0.02em;
@@ -198,89 +146,51 @@
   }
 
   h3 {
-    font-size: 1.875rem; /* 30px */
+    font-size: 1.75rem; /* 28px */
     font-weight: 600;
-    line-height: 2.25rem; /* 36px */
-    letter-spacing: -0.025em;
-    text-wrap: balance;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
   }
 
   h4 {
-    font-size: 1.125rem; /* 18px */
+    font-size: 1.25rem; /* 20px */
     font-weight: 600;
-    line-height: 1.75rem; /* 28px */
+    line-height: 1.4;
   }
 
   p {
     font-size: 1.125rem; /* 18px */
-    line-height: 1.625rem; /* 26px */
+    line-height: 1.75;
   }
 
   .text-body-lg {
-    font-size: 1.25rem; /* 20px */
-    line-height: 1.75rem; /* 28px */
+    font-size: 1.25rem;
+    line-height: 1.8;
   }
 
   .text-body-md {
-    font-size: 1rem; /* 16px */
-    line-height: 1.5rem; /* 24px */
-  }
-
-  .text-body-sm {
-    font-size: 0.875rem; /* 14px */
-    line-height: 1.25rem; /* 20px */
-  }
-
-  .text-body-xs {
-    font-size: 0.8125rem; /* 13px */
-    line-height: 1.125rem; /* 18px */
-  }
-
-  .text-nav-link {
-    font-size: 0.9375rem; /* 15px */
-    font-weight: 400;
-  }
-
-  .text-button {
-    font-size: 0.875rem; /* 14px */
-    font-weight: 500;
-  }
-
-  .text-badge {
-    font-size: 0.8125rem; /* 13px */
-    font-weight: 500;
+    font-size: 1rem;
+    line-height: 1.6;
   }
 
   .text-stats-lg {
-    font-size: 2.25rem; /* 36px */
-    font-weight: 600;
-    line-height: 1.2;
-    letter-spacing: -0.02em;
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+  }
+
+  /* Code block styling */
+  pre, code {
+    font-family: var(--font-mono);
   }
 
   @media (max-width: 768px) {
     h1 {
-      font-size: 3rem; /* 48px */
-      line-height: 3.375rem; /* 54px */
-      letter-spacing: -0.025em; /* -1.2px */
+      font-size: 2.75rem;
+      line-height: 1.1;
     }
-
     h2 {
-      font-size: 2.25rem; /* 36px */
-    }
-
-    h3 {
-      font-size: 1.5rem; /* 24px */
-      line-height: 2rem; /* 32px */
-    }
-
-    p {
-      font-size: 1rem; /* 16px */
-      line-height: 1.5rem; /* 24px */
-    }
-
-    .text-stats-lg {
-      font-size: 2.25rem; /* 36px */
+      font-size: 2rem;
     }
   }
 
@@ -288,15 +198,8 @@
     max-width: 1280px;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 8px;
-    padding-right: 8px;
-  }
-
-  @media (min-width: 1024px) {
-    .container {
-      padding-left: 0;
-      padding-right: 0;
-    }
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 }
 
