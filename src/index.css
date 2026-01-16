@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -7,152 +7,218 @@
 
 @layer base {
   :root {
-    /* Brand: Deep Navy & Electric Blue for Trust & Tech */
-    /* OKLCH derived ramps for authoritative, technical tone */
+    /* Metrifox Design System - Light Mode (Primary) */
+    /* Institutional Confidence: warm neutral white, muted lime accent */
     
-    /* Backgrounds: Dark navy/slate */
-    --background: 230 25% 10%; /* Very dark blue-grey */
-    --foreground: 210 20% 98%;
+    /* Backgrounds: Warm neutral white */
+    --background: 40 20% 98%; /* Warm off-white */
+    --foreground: 220 15% 20%; /* Charcoal text */
 
-    --card: 230 20% 14%;
-    --card-foreground: 210 20% 98%;
-
-    --popover: 230 20% 14%;
-    --popover-foreground: 210 20% 98%;
-
-    /* Primary: Electric Blue / Azure */
-    --primary: 215 90% 55%; 
-    --primary-foreground: 0 0% 100%;
-
-    /* Secondary: Teal/Cyan */
-    --secondary: 190 90% 45%;
-    --secondary-foreground: 0 0% 100%;
-
-    /* Muted/Neutral */
-    --muted: 225 15% 20%;
-    --muted-foreground: 220 15% 70%;
-
-    /* Accent: Vibrant Green/Cyan for metrics */
-    --accent: 170 85% 45%;
-    --accent-foreground: 0 0% 100%;
-
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 225 15% 22%;
-    --input: 225 15% 22%;
-    --ring: 215 90% 55%;
-
-    --success: 150 80% 40%;
-    --warning: 40 90% 50%;
-    --info: 210 90% 50%;
-
-    /* Gradients: Cool, professional, data-centric */
-    --gradient-primary-from: 215 90% 55%;
-    --gradient-primary-to: 190 90% 45%;
-    --gradient-secondary-from: 170 85% 45%;
-    --gradient-secondary-to: 215 90% 55%;
-
-    --radius: 0.5rem; /* More squared, technical feel */
-  }
-
-  .light-mode {
-    /* Clean, high-contrast, professional light mode */
-    --background: 210 20% 98%; /* Off-white cool */
-    --foreground: 225 25% 15%; /* Dark navy text */
-
-    --card: 0 0% 100%;
-    --card-foreground: 225 25% 15%;
+    --card: 40 15% 96%;
+    --card-foreground: 220 15% 20%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 225 25% 15%;
+    --popover-foreground: 220 15% 20%;
 
-    --primary: 215 90% 50%; /* Deep electric blue */
+    /* Primary: Muted Brand Lime */
+    --primary: 75 45% 45%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 190 90% 40%; /* Deep teal */
-    --secondary-foreground: 0 0% 100%;
+    /* Secondary: Soft neutral */
+    --secondary: 40 10% 92%;
+    --secondary-foreground: 220 15% 25%;
 
-    --muted: 215 15% 92%;
-    --muted-foreground: 220 15% 40%;
+    /* Muted/Neutral */
+    --muted: 40 10% 94%;
+    --muted-foreground: 220 10% 50%;
 
-    --accent: 170 85% 40%; /* Deep green accent */
+    /* Accent: Desaturated lime for emphasis */
+    --accent: 75 40% 50%;
     --accent-foreground: 0 0% 100%;
 
-    --border: 215 15% 88%;
-    --input: 215 15% 90%;
-    --ring: 215 90% 50%;
+    /* Structural lines */
+    --border: 220 10% 88%;
+    --input: 220 10% 90%;
+    --ring: 75 45% 45%;
 
-    --gradient-primary-from: 215 90% 50%;
-    --gradient-primary-to: 190 90% 40%;
-    --gradient-secondary-from: 170 85% 40%;
-    --gradient-secondary-to: 215 90% 50%;
+    /* Status colors - muted, professional */
+    --success: 145 40% 42%;
+    --warning: 40 60% 50%;
+    --info: 210 50% 50%;
+    --destructive: 0 60% 50%;
+    --destructive-foreground: 0 0% 98%;
+
+    /* Motion timing (anime.js integration) */
+    --motion-duration-min: 600ms;
+    --motion-duration-max: 1800ms;
+    --motion-easing: cubic-bezier(0.4, 0, 0.2, 1);
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    /* Metrifox Design System - Dark Mode */
+    /* Charcoal (not black), desaturated lime accent */
+    
+    /* Backgrounds: Charcoal, not pure black */
+    --background: 220 15% 12%; /* Deep charcoal */
+    --foreground: 220 10% 90%; /* Light gray text */
+
+    --card: 220 12% 16%;
+    --card-foreground: 220 10% 90%;
+
+    --popover: 220 12% 14%;
+    --popover-foreground: 220 10% 90%;
+
+    /* Primary: Desaturated Brand Lime */
+    --primary: 75 35% 55%;
+    --primary-foreground: 220 15% 12%;
+
+    /* Secondary: Deep soft gray */
+    --secondary: 220 10% 20%;
+    --secondary-foreground: 220 10% 85%;
+
+    /* Muted/Neutral */
+    --muted: 220 10% 18%;
+    --muted-foreground: 220 8% 60%;
+
+    /* Accent: Desaturated lime */
+    --accent: 75 30% 50%;
+    --accent-foreground: 220 15% 12%;
+
+    /* Structural lines: Soft gray */
+    --border: 220 10% 22%;
+    --input: 220 10% 20%;
+    --ring: 75 35% 55%;
+
+    /* Status colors - muted for dark mode */
+    --success: 145 35% 45%;
+    --warning: 40 55% 48%;
+    --info: 210 45% 55%;
+    --destructive: 0 55% 55%;
+    --destructive-foreground: 0 0% 98%;
   }
 
   * {
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-background font-inter text-foreground antialiased;
     letter-spacing: -0.01em;
+    line-height: 1.6;
+  }
+
+  /* Respect reduced motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+    
+    html {
+      scroll-behavior: auto;
+    }
   }
   
   ::selection {
-    @apply bg-primary/20 text-primary;
+    @apply bg-primary/20 text-foreground;
+  }
+}
+
+@layer components {
+  /* Institutional Button Styles */
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-md;
+    @apply bg-primary text-primary-foreground font-medium;
+    @apply transition-all duration-300 ease-out;
+    @apply hover:opacity-90 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
   }
 
-  /* Brand gradients - Adjusted for Metrix */
-  .metrix-gradient {
-    background: linear-gradient(135deg, 
-      hsl(var(--gradient-primary-from)) 0%, 
-      hsl(var(--gradient-primary-to)) 100%);
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-md;
+    @apply bg-transparent border border-border text-foreground font-medium;
+    @apply transition-all duration-300 ease-out;
+    @apply hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
   }
 
-  .metrix-gradient-text {
-    @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, 
-      hsl(var(--gradient-primary-from)) 0%, 
-      hsl(var(--gradient-secondary-to)) 100%);
-  }
-
-  .metrix-glass {
-    @apply backdrop-blur-xl bg-card/60 border border-border/50;
+  /* Surface layers */
+  .surface-elevated {
+    @apply bg-card border border-border;
     box-shadow: 
-      0 4px 20px -2px hsl(var(--background) / 0.5),
-      inset 0 1px 0 hsl(var(--foreground) / 0.05);
+      0 1px 3px 0 rgb(0 0 0 / 0.03),
+      0 1px 2px -1px rgb(0 0 0 / 0.03);
   }
 
-  /* Grid Pattern for Data Feel */
-  .data-grid {
-    background-size: 40px 40px;
+  /* Structural line styles for wireframe */
+  .wireframe-line {
+    stroke: hsl(var(--border));
+    stroke-width: 0.5;
+    fill: none;
+  }
+
+  .dark .wireframe-line {
+    stroke: hsl(var(--border));
+    stroke-width: 0.6;
+  }
+
+  /* Grid Pattern - subtle, professional */
+  .subtle-grid {
+    background-size: 60px 60px;
     background-image:
-      linear-gradient(to right, hsl(var(--border) / 0.3) 1px, transparent 1px),
-      linear-gradient(to bottom, hsl(var(--border) / 0.3) 1px, transparent 1px);
-    mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+      linear-gradient(to right, hsl(var(--border) / 0.2) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border) / 0.2) 1px, transparent 1px);
   }
 
-  .light-mode .data-grid {
-    background-image:
-      linear-gradient(to right, hsl(var(--border) / 0.6) 1px, transparent 1px),
-      linear-gradient(to bottom, hsl(var(--border) / 0.6) 1px, transparent 1px);
+  /* Typography utilities */
+  .text-balance {
+    text-wrap: balance;
   }
 
-  /* Utility classes for the new design */
-  .text-balance { text-wrap: balance; }
-  
-  /* Code/Tech feel */
-  .font-mono {
-    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  .heading-xl {
+    @apply text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.1];
   }
 
-  /* Card Hover Effects */
-  .hover-card {
-    transition: all 0.3s ease;
+  .heading-lg {
+    @apply text-3xl md:text-4xl font-semibold tracking-tight leading-[1.15];
   }
-  .hover-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 30px -10px hsl(var(--primary) / 0.2);
-    @apply border-primary/40;
+
+  .heading-md {
+    @apply text-xl md:text-2xl font-semibold tracking-tight leading-[1.2];
+  }
+
+  .body-lg {
+    @apply text-lg text-muted-foreground leading-relaxed;
+  }
+
+  .body-base {
+    @apply text-base text-muted-foreground leading-relaxed;
+  }
+}
+
+@layer utilities {
+  /* Generous spacing for institutional feel */
+  .section-padding {
+    @apply py-24 md:py-32 lg:py-40;
+  }
+
+  .container-narrow {
+    @apply max-w-4xl mx-auto px-6 md:px-8;
+  }
+
+  .container-wide {
+    @apply max-w-7xl mx-auto px-6 md:px-8;
+  }
+
+  /* Focus states for accessibility */
+  .focus-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background;
   }
 }

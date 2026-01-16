@@ -1,125 +1,188 @@
-import React from 'react';
-import { Check, X } from 'lucide-react';
+import React, { useRef, useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
+import { ArrowRight, Check } from 'lucide-react';
+import { animate, stagger } from 'animejs';
+
+interface PricingTier {
+  name: string;
+  description: string;
+  price: string;
+  period: string;
+  features: string[];
+  cta: string;
+  featured?: boolean;
+}
+
+const tiers: PricingTier[] = [
+  {
+    name: 'Starter',
+    description: 'For early-stage products validating pricing models.',
+    price: '$0',
+    period: 'up to 10k events/mo',
+    features: [
+      'Core metering API',
+      'Basic entitlements',
+      'Single pricing model',
+      'Email support'
+    ],
+    cta: 'Get Started'
+  },
+  {
+    name: 'Growth',
+    description: 'For teams shipping to production.',
+    price: '$499',
+    period: '/month',
+    features: [
+      'Unlimited events',
+      'Multiple pricing models',
+      'Advanced entitlements',
+      'Webhooks & integrations',
+      'Priority support'
+    ],
+    cta: 'Start Trial',
+    featured: true
+  },
+  {
+    name: 'Enterprise',
+    description: 'For organizations at scale.',
+    price: 'Custom',
+    period: 'tailored to needs',
+    features: [
+      'Dedicated infrastructure',
+      'Custom SLA',
+      'SSO & RBAC',
+      'Audit logging',
+      'Dedicated success manager'
+    ],
+    cta: 'Contact Sales'
+  }
+];
 
 const Pricing = () => {
-  const plans = [
-    {
-      name: "Starter",
-      price: "$0",
-      period: "/mo",
-      description: "Perfect for validating your MVP.",
-      features: [
-        "Up to $10k processed/mo",
-        "10,000 metered events",
-        "Standard monthly invoicing",
-        "Stripe integration",
-        "Email support"
-      ],
-      cta: "Start for free",
-      variant: "outline",
-      popular: false
-    },
-    {
-      name: "Growth",
-      price: "$299",
-      period: "/mo",
-      description: "Scale your revenue operations.",
-      features: [
-        "Up to $100k processed/mo",
-        "1M metered events",
-        "Dynamic & tiered pricing",
-        "Entitlement gating",
-        "Slack connect support"
-      ],
-      cta: "Start 14-day trial",
-      variant: "default",
-      popular: true
-    },
-    {
-      name: "Scale",
-      price: "Custom",
-      period: "",
-      description: "For high-volume platforms.",
-      features: [
-        "Unlimited processing",
-        "Unlimited events",
-        "Custom contracts & SLAs",
-        "Dedicated solutions engineer",
-        "On-prem deployment option"
-      ],
-      cta: "Contact Sales",
-      variant: "outline",
-      popular: false
+  const sectionRef = useRef<HTMLElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setIsVisible(true);
+          
+          const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          if (prefersReducedMotion) return;
+
+          animate(
+            '.pricing-item',
+            {
+              opacity: [0, 1],
+              translateY: [24, 0],
+              duration: 800,
+              delay: stagger(150),
+              easing: 'cubicBezier(0.4, 0, 0.2, 1)'
+            }
+          );
+        }
+      },
+      { threshold: 0.15 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
     }
-  ];
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <section id="pricing" className="w-full py-24 px-6 md:px-12 bg-muted/30">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground">
-            Pricing that scales with you
+    <section 
+      ref={sectionRef}
+      id="pricing" 
+      className="relative w-full bg-muted/30 section-padding overflow-hidden"
+    >
+      <div className="container-wide">
+        {/* Section header */}
+        <div className="max-w-2xl mx-auto text-center mb-16 space-y-4">
+          <h2 className="heading-lg text-foreground">
+            Predictable pricing
           </h2>
-          <p className="text-xl text-muted-foreground">
-            No hidden fees. No per-seat pricing. Just pay for the volume you process.
+          <p className="body-lg">
+            Start free, scale as you grow. No hidden fees.
           </p>
-          
-          <div className="flex items-center justify-center gap-4 pt-4">
-             <Badge variant="secondary" className="text-sm py-1">Monthly</Badge>
-             <span className="text-sm text-muted-foreground">Annually (-20%)</span>
-          </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {plans.map((plan, i) => (
-            <div 
-              key={i} 
-              className={`relative flex flex-col p-8 rounded-2xl bg-card border ${plan.popular ? 'border-primary shadow-2xl shadow-primary/10' : 'border-border'} transition-all hover:translate-y-[-4px]`}
+        {/* Pricing tiers */}
+        <div 
+          className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto"
+          style={{ opacity: isVisible ? 1 : 0 }}
+        >
+          {tiers.map((tier) => (
+            <div
+              key={tier.name}
+              className={`pricing-item p-8 rounded-lg border transition-all duration-500 ${
+                tier.featured 
+                  ? 'bg-card border-primary/30 shadow-lg' 
+                  : 'bg-card/50 border-border hover:border-primary/20'
+              }`}
+              style={{ opacity: 0 }}
             >
-              {plan.popular && (
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
-                  Most Popular
+              <div className="space-y-6">
+                <div>
+                  <h3 className="text-lg font-semibold text-foreground mb-1">
+                    {tier.name}
+                  </h3>
+                  <p className="text-sm text-muted-foreground">
+                    {tier.description}
+                  </p>
                 </div>
-              )}
 
-              <div className="mb-8">
-                <h3 className="text-lg font-medium text-muted-foreground mb-2">{plan.name}</h3>
-                <div className="flex items-baseline gap-1 mb-4">
-                  <span className="text-4xl font-bold text-foreground">{plan.price}</span>
-                  <span className="text-muted-foreground">{plan.period}</span>
-                </div>
-                <p className="text-sm text-muted-foreground">{plan.description}</p>
-              </div>
-
-              <div className="space-y-4 mb-8 flex-1">
-                {plan.features.map((feature, idx) => (
-                  <div key={idx} className="flex items-start gap-3">
-                    <div className={`mt-0.5 w-5 h-5 rounded-full flex items-center justify-center ${plan.popular ? 'bg-primary/20 text-primary' : 'bg-muted text-muted-foreground'}`}>
-                      <Check className="w-3 h-3" />
-                    </div>
-                    <span className="text-sm text-foreground">{feature}</span>
+                <div className="border-t border-border pt-6">
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-3xl font-semibold text-foreground">
+                      {tier.price}
+                    </span>
+                    <span className="text-sm text-muted-foreground">
+                      {tier.period}
+                    </span>
                   </div>
-                ))}
-              </div>
+                </div>
 
-              <Button 
-                variant={plan.popular ? 'default' : 'outline'} 
-                className={`w-full ${plan.popular ? 'bg-primary hover:bg-primary/90' : ''}`}
-              >
-                {plan.cta}
-              </Button>
+                <ul className="space-y-3">
+                  {tier.features.map((feature, i) => (
+                    <li key={i} className="flex items-start gap-3 text-sm">
+                      <Check className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                      <span className="text-foreground">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <a 
+                  href={tier.name === 'Enterprise' ? '/contact' : '/signup'}
+                  className="block"
+                >
+                  <Button 
+                    className={`w-full ${
+                      tier.featured 
+                        ? 'btn-primary' 
+                        : 'btn-secondary'
+                    }`}
+                  >
+                    {tier.cta}
+                    {tier.featured && <ArrowRight className="ml-2 w-4 h-4" />}
+                  </Button>
+                </a>
+              </div>
             </div>
           ))}
         </div>
 
-        <div className="mt-16 p-8 rounded-2xl bg-card border border-border flex flex-col md:flex-row items-center justify-between gap-8">
-           <div className="space-y-2">
-             <h3 className="text-lg font-bold text-foreground">Startups get $50k in credits</h3>
-             <p className="text-muted-foreground">Backed by YC, Techstars, or Sequoia? Apply for our startup program.</p>
-           </div>
-           <Button variant="secondary">Apply for Credits</Button>
+        {/* Enterprise callout */}
+        <div className="max-w-2xl mx-auto mt-16 text-center">
+          <p className="text-sm text-muted-foreground">
+            Need volume pricing or custom terms?{' '}
+            <a href="/contact" className="text-primary hover:underline font-medium">
+              Talk to our team
+            </a>
+          </p>
         </div>
       </div>
     </section>

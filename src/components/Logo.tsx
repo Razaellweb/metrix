@@ -3,14 +3,13 @@ import React from 'react';
 
 const Logo = () => {
   return (
-    <div className="flex items-center gap-2 group cursor-pointer">
-      <div className="relative w-8 h-8 flex items-center justify-center bg-primary rounded-lg shadow-lg shadow-primary/30 transition-transform group-hover:scale-105">
-        <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent rounded-lg" />
+    <a href="/" className="flex items-center gap-2.5 group focus-ring rounded-sm">
+      <div className="relative w-8 h-8 flex items-center justify-center bg-primary rounded-md transition-transform duration-300 group-hover:scale-[1.02]">
         <svg 
           viewBox="0 0 24 24" 
           fill="none" 
           stroke="currentColor" 
-          strokeWidth="3" 
+          strokeWidth="2.5" 
           strokeLinecap="round" 
           strokeLinejoin="round" 
           className="w-5 h-5 text-primary-foreground"
@@ -19,10 +18,10 @@ const Logo = () => {
           <path d="M18 9l-5 5-4-4-3 3" />
         </svg>
       </div>
-      <span className="font-bold text-xl tracking-tight text-foreground group-hover:text-primary transition-colors">
-        Metrix
+      <span className="font-semibold text-lg tracking-tight text-foreground">
+        Metrifox
       </span>
-    </div>
+    </a>
   );
 };
 

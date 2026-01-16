@@ -1,74 +1,89 @@
 import React, { useState } from 'react';
-import { Plus, Minus } from 'lucide-react';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
 
-const faqs = [
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+const faqs: FAQItem[] = [
   {
-    q: 'How does Metrix handle high-volume event ingestion?',
-    a: 'We use a highly scalable, idempotent ingestion pipeline capable of handling millions of events per second. Events are aggregated in real-time for immediate billing visibility.'
+    question: 'How does usage-based pricing work with Metrifox?',
+    answer: 'You send us usage events via our API or SDKs. We aggregate, deduplicate, and apply your pricing rules in real-time. At the end of each billing period, we generate accurate invoices automatically.'
   },
   {
-    q: 'Can I combine subscription and usage-based pricing?',
-    a: 'Absolutely. Our hybrid pricing engine allows you to charge a base recurring fee plus overage, tiered usage, or per-unit costs on the same invoice.'
+    question: 'What pricing models do you support?',
+    answer: 'Subscriptions, usage-based (per-unit, tiered, graduated), credit systems, hybrid models combining fixed and variable, and outcome-based pricing. You can switch or combine models as your business evolves.'
   },
   {
-    q: 'Do you support multi-currency and tax?',
-    a: 'Yes, we support billing in 135+ currencies and automatically calculate VAT, GST, and sales tax based on the customer’s location.'
+    question: 'How do entitlement checks work?',
+    answer: 'Our entitlement API provides sub-millisecond responses. You can gate features based on plan limits, usage thresholds, credit balances, or custom rules. All checks happen at the edge for minimal latency.'
   },
   {
-    q: 'How does the entitlement engine work?',
-    a: 'You define limits (e.g., "500 API calls/mo") in your plan. Our SDK checks these limits in real-time before your app executes an action, blocking or warning users automatically.'
+    question: 'What happens if I exceed my event quota?',
+    answer: 'On Starter, we will notify you before you hit limits. On Growth and Enterprise, events are unlimited. We never drop or delay events regardless of volume.'
   },
   {
-    q: 'Is my data secure?',
-    a: 'We are SOC 2 Type II compliant and GDPR ready. All data is encrypted at rest and in transit, and we offer private instances for enterprise requirements.'
+    question: 'Do you integrate with existing payment providers?',
+    answer: 'Yes. We integrate natively with Stripe for payment processing. We handle the billing logic while Stripe handles payment collection, giving you the best of both worlds.'
+  },
+  {
+    question: 'Is Metrifox SOC2 compliant?',
+    answer: 'Yes, we maintain SOC2 Type II certification. We also support GDPR compliance requirements and can sign DPAs for enterprise customers.'
   }
 ];
 
 const FAQ = () => {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
-
   return (
-    <section id="faq" className="w-full py-24 px-6 md:px-12 bg-background">
-      <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold tracking-tight text-foreground">Frequently asked questions</h2>
+    <section 
+      id="faq" 
+      className="relative w-full bg-background section-padding overflow-hidden"
+    >
+      <div className="container-narrow">
+        {/* Section header */}
+        <div className="text-center mb-16 space-y-4">
+          <h2 className="heading-lg text-foreground">
+            Frequently asked questions
+          </h2>
+          <p className="body-lg">
+            Common questions about implementation and capabilities.
+          </p>
         </div>
-        
-        <div className="space-y-4">
-          {faqs.map((item, i) => (
-            <div 
-              key={i} 
-              className={`border rounded-lg transition-all duration-200 ${
-                openIndex === i 
-                  ? 'bg-card border-primary/30 shadow-md' 
-                  : 'bg-transparent border-border hover:border-border/80'
-              }`}
+
+        {/* FAQ Accordion */}
+        <Accordion type="single" collapsible className="space-y-3">
+          {faqs.map((faq, index) => (
+            <AccordionItem 
+              key={index} 
+              value={`item-${index}`}
+              className="border border-border rounded-lg px-6 data-[state=open]:bg-card/50 transition-colors duration-300"
             >
-              <button 
-                className="w-full flex items-center justify-between p-6 text-left"
-                onClick={() => setOpenIndex(openIndex === i ? null : i)}
-              >
-                <span className={`font-medium text-lg ${openIndex === i ? 'text-primary' : 'text-foreground'}`}>
-                  {item.q}
-                </span>
-                {openIndex === i ? (
-                  <Minus className="w-5 h-5 text-primary shrink-0" />
-                ) : (
-                  <Plus className="w-5 h-5 text-muted-foreground shrink-0" />
-                )}
-              </button>
-              
-              <div 
-                className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                  openIndex === i ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-                }`}
-              >
-                <div className="px-6 pb-6 text-muted-foreground leading-relaxed">
-                  {item.a}
-                </div>
-              </div>
-            </div>
+              <AccordionTrigger className="text-left text-foreground font-medium hover:no-underline py-5">
+                {faq.question}
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground pb-5 leading-relaxed">
+                {faq.answer}
+              </AccordionContent>
+            </AccordionItem>
           ))}
+        </Accordion>
+
+        {/* Contact CTA */}
+        <div className="mt-16 text-center">
+          <p className="text-muted-foreground">
+            Have more questions?{' '}
+            <a 
+              href="mailto:support@metrifox.com" 
+              className="text-primary hover:underline font-medium"
+            >
+              Contact support
+            </a>
+          </p>
         </div>
       </div>
     </section>
