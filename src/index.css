@@ -7,78 +7,86 @@
 
 @layer base {
   :root {
-    /* Brand: blue/teal on warm neutrals */
-    --background: 220 18% 6%; /* near-black */
+    /* Brand: Deep Navy & Electric Blue for Trust & Tech */
+    /* OKLCH derived ramps for authoritative, technical tone */
+    
+    /* Backgrounds: Dark navy/slate */
+    --background: 230 25% 10%; /* Very dark blue-grey */
     --foreground: 210 20% 98%;
 
-    --card: 220 14% 10%;
+    --card: 230 20% 14%;
     --card-foreground: 210 20% 98%;
 
-    --popover: 220 14% 10%;
+    --popover: 230 20% 14%;
     --popover-foreground: 210 20% 98%;
 
-    --primary: 210 92% 56%; /* azure blue */
+    /* Primary: Electric Blue / Azure */
+    --primary: 215 90% 55%; 
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 186 92% 45%; /* teal */
+    /* Secondary: Teal/Cyan */
+    --secondary: 190 90% 45%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 220 14% 16%;
-    --muted-foreground: 220 10% 72%;
+    /* Muted/Neutral */
+    --muted: 225 15% 20%;
+    --muted-foreground: 220 15% 70%;
 
-    --accent: 192 95% 50%; /* cyan/teal accent */
-    --accent-foreground: 0 0% 6%;
+    /* Accent: Vibrant Green/Cyan for metrics */
+    --accent: 170 85% 45%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 220 14% 18%;
-    --input: 220 14% 18%;
-    --ring: 210 92% 56%;
+    --border: 225 15% 22%;
+    --input: 225 15% 22%;
+    --ring: 215 90% 55%;
 
-    --success: 161 94% 36%;
-    --warning: 38 92% 50%;
-    --info: 199 89% 48%;
+    --success: 150 80% 40%;
+    --warning: 40 90% 50%;
+    --info: 210 90% 50%;
 
-    /* Gradients */
-    --gradient-primary-from: 210 92% 56%;
-    --gradient-primary-to: 186 92% 45%;
-    --gradient-secondary-from: 192 95% 50%;
-    --gradient-secondary-to: 210 92% 56%;
+    /* Gradients: Cool, professional, data-centric */
+    --gradient-primary-from: 215 90% 55%;
+    --gradient-primary-to: 190 90% 45%;
+    --gradient-secondary-from: 170 85% 45%;
+    --gradient-secondary-to: 215 90% 55%;
 
-    --radius: 0.9rem;
+    --radius: 0.5rem; /* More squared, technical feel */
   }
 
   .light-mode {
-    --background: 0 0% 100%;
-    --foreground: 224 8% 10%;
+    /* Clean, high-contrast, professional light mode */
+    --background: 210 20% 98%; /* Off-white cool */
+    --foreground: 225 25% 15%; /* Dark navy text */
 
-    --card: 210 20% 98%;
-    --card-foreground: 224 8% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 225 25% 15%;
 
-    --popover: 210 20% 98%;
-    --popover-foreground: 224 8% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 225 25% 15%;
 
-    --primary: 210 92% 46%;
+    --primary: 215 90% 50%; /* Deep electric blue */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 186 92% 42%;
+    --secondary: 190 90% 40%; /* Deep teal */
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 210 20% 95%;
-    --muted-foreground: 224 6% 35%;
+    --muted: 215 15% 92%;
+    --muted-foreground: 220 15% 40%;
 
-    --accent: 192 95% 46%;
+    --accent: 170 85% 40%; /* Deep green accent */
     --accent-foreground: 0 0% 100%;
 
-    --border: 210 18% 88%;
-    --input: 210 18% 90%;
-    --ring: 210 92% 46%;
+    --border: 215 15% 88%;
+    --input: 215 15% 90%;
+    --ring: 215 90% 50%;
 
-    --gradient-primary-from: 210 92% 46%;
-    --gradient-primary-to: 186 92% 42%;
-    --gradient-secondary-from: 192 95% 46%;
-    --gradient-secondary-to: 210 92% 46%;
+    --gradient-primary-from: 215 90% 50%;
+    --gradient-primary-to: 190 90% 40%;
+    --gradient-secondary-from: 170 85% 40%;
+    --gradient-secondary-to: 215 90% 50%;
   }
 
   * {
@@ -87,129 +95,64 @@
 
   body {
     @apply bg-background font-inter text-foreground antialiased;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.01em;
   }
   
   ::selection {
-    @apply bg-primary text-primary-foreground;
+    @apply bg-primary/20 text-primary;
   }
 
-  /* Brand gradients */
-  .neural-gradient {
+  /* Brand gradients - Adjusted for Metrix */
+  .metrix-gradient {
     background: linear-gradient(135deg, 
       hsl(var(--gradient-primary-from)) 0%, 
       hsl(var(--gradient-primary-to)) 100%);
   }
 
-  .neural-gradient-secondary {
-    background: linear-gradient(135deg, 
-      hsl(var(--gradient-secondary-from)) 0%, 
+  .metrix-gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, 
+      hsl(var(--gradient-primary-from)) 0%, 
       hsl(var(--gradient-secondary-to)) 100%);
   }
 
-  .infrastructure-glow {
-    position: relative;
+  .metrix-glass {
+    @apply backdrop-blur-xl bg-card/60 border border-border/50;
+    box-shadow: 
+      0 4px 20px -2px hsl(var(--background) / 0.5),
+      inset 0 1px 0 hsl(var(--foreground) / 0.05);
   }
 
-  .infrastructure-glow::before {
-    content: "";
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(135deg, 
-      hsl(var(--primary)) 0%, 
-      hsl(var(--secondary)) 50%, 
-      hsl(var(--accent)) 100%);
-    z-index: -1;
-    border-radius: inherit;
-    opacity: 0.08;
-    filter: blur(8px);
-  }
-
-  .neural-grid {
-    background-image: 
-      linear-gradient(hsl(var(--primary) / 0.08) 1px, transparent 1px),
-      linear-gradient(90deg, hsl(var(--primary) / 0.08) 1px, transparent 1px);
+  /* Grid Pattern for Data Feel */
+  .data-grid {
     background-size: 40px 40px;
+    background-image:
+      linear-gradient(to right, hsl(var(--border) / 0.3) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border) / 0.3) 1px, transparent 1px);
+    mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
   }
 
-  .light-mode .neural-grid {
-    background-image: 
-      linear-gradient(hsl(var(--primary) / 0.06) 1px, transparent 1px),
-      linear-gradient(90deg, hsl(var(--primary) / 0.06) 1px, transparent 1px);
+  .light-mode .data-grid {
+    background-image:
+      linear-gradient(to right, hsl(var(--border) / 0.6) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border) / 0.6) 1px, transparent 1px);
   }
 
-  /* Animated grid */
-  .animated-grid {
-    background-image: 
-      linear-gradient(hsl(var(--primary) / 0.18) 1px, transparent 1px),
-      linear-gradient(90deg, hsl(var(--primary) / 0.18) 1px, transparent 1px);
-    background-size: 60px 60px;
-    animation: grid-flow 20s linear infinite;
-  }
-
-  @keyframes grid-flow {
-    0% { background-position: 0 0; }
-    100% { background-position: 60px 60px; }
-  }
-
+  /* Utility classes for the new design */
   .text-balance { text-wrap: balance; }
-
-  /* Glass */
-  .neural-glass {
-    @apply backdrop-blur-xl bg-card/80 border border-primary/20;
-    box-shadow: 
-      0 0 0 1px hsl(var(--primary) / 0.08),
-      0 8px 32px hsl(var(--background) / 0.8),
-      inset 0 1px 0 hsl(var(--primary) / 0.08);
-  }
-
-  .light-mode .neural-glass {
-    @apply backdrop-blur-xl bg-card/95 border border-primary/25;
-    box-shadow: 
-      0 0 0 1px hsl(var(--primary) / 0.12),
-      0 8px 32px hsl(var(--foreground) / 0.08),
-      inset 0 1px 0 hsl(var(--primary) / 0.12);
-  }
   
-  .infrastructure-card {
-    @apply bg-card/60 border border-primary/15 backdrop-blur-sm;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Code/Tech feel */
+  .font-mono {
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
   }
 
-  .infrastructure-card:hover {
-    @apply border-primary/35 bg-card/80;
-    box-shadow: 0 20px 40px hsl(var(--primary) / 0.08);
-    transform: translateY(-2px);
+  /* Card Hover Effects */
+  .hover-card {
+    transition: all 0.3s ease;
   }
-  
-  .glow-primary {
-    filter: drop-shadow(0 0 12px hsl(var(--primary) / 0.4));
-    transition: filter 0.3s ease;
+  .hover-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px -10px hsl(var(--primary) / 0.2);
+    @apply border-primary/40;
   }
-  .glow-primary:hover { filter: drop-shadow(0 0 20px hsl(var(--primary) / 0.55)); }
-  .glow-secondary { filter: drop-shadow(0 0 12px hsl(var(--secondary) / 0.4)); }
-  .glow-accent { filter: drop-shadow(0 0 12px hsl(var(--accent) / 0.4)); }
-
-  /* Terminal/Code styling */
-  .terminal-text {
-    font-family: 'JetBrains Mono', 'Fira Code', 'Monaco', 'Consolas', monospace;
-    @apply text-primary;
-  }
-
-  .code-block {
-    @apply bg-background border border-primary/25 rounded-lg p-4;
-    background: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--card)) 100%);
-  }
-
-  /* Smooth scroll */
-  html { scroll-behavior: smooth; }
-
-  /* Scrollbar */
-  ::-webkit-scrollbar { width: 10px; }
-  ::-webkit-scrollbar-track { @apply bg-background; }
-  ::-webkit-scrollbar-thumb { @apply bg-primary/30 rounded-full; }
-  ::-webkit-scrollbar-thumb:hover { @apply bg-primary/45; }
 }

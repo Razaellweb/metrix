@@ -1,127 +1,125 @@
-
 import React from 'react';
+import { Check, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 
 const Pricing = () => {
   const plans = [
     {
-      name: "Free",
+      name: "Starter",
       price: "$0",
       period: "/mo",
-      description: "For prototypes and small internal tools",
+      description: "Perfect for validating your MVP.",
       features: [
-        "10k API calls/mo",
-        "1 source (repo or docs)",
-        "Basic indexing",
-        "Community support"
+        "Up to $10k processed/mo",
+        "10,000 metered events",
+        "Standard monthly invoicing",
+        "Stripe integration",
+        "Email support"
       ],
-      buttonText: "Start free",
-      buttonHref: "/signup",
+      cta: "Start for free",
+      variant: "outline",
       popular: false
     },
     {
-      name: "Team",
-      price: "$199",
+      name: "Growth",
+      price: "$299",
       period: "/mo",
-      description: "For growing teams shipping assistants & IDE integrations",
+      description: "Scale your revenue operations.",
       features: [
-        "1M API calls/mo",
-        "Unlimited sources",
-        "Hybrid search (BM25 + semantic)",
-        "Dashboard & analytics",
-        "Token scopes & rotation",
-        "Email & chat support"
+        "Up to $100k processed/mo",
+        "1M metered events",
+        "Dynamic & tiered pricing",
+        "Entitlement gating",
+        "Slack connect support"
       ],
-      buttonText: "Start 14‑day trial",
-      buttonHref: "/signup",
+      cta: "Start 14-day trial",
+      variant: "default",
       popular: true
     },
     {
-      name: "Enterprise",
+      name: "Scale",
       price: "Custom",
       period: "",
-      description: "For security‑first organizations and private deployments",
+      description: "For high-volume platforms.",
       features: [
-        "SSO (SAML/OIDC) & RBAC",
-        "On‑prem or private cloud",
-        "Audit logs & SIEM export",
-        "Dedicated cluster",
-        "SLA & solutions engineer",
-        "Custom quotas & pricing"
+        "Unlimited processing",
+        "Unlimited events",
+        "Custom contracts & SLAs",
+        "Dedicated solutions engineer",
+        "On-prem deployment option"
       ],
-      buttonText: "Contact sales",
-      buttonHref: "#contact",
+      cta: "Contact Sales",
+      variant: "outline",
       popular: false
     }
   ];
-  
+
   return (
-    <section id="pricing" className="w-full py-20 px-6 md:px-12 bg-background">
-      <div className="max-w-7xl mx-auto space-y-16">
-        <div className="text-center space-y-4 max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-medium tracking-tighter text-foreground">
-            Simple, usage‑based pricing
+    <section id="pricing" className="w-full py-24 px-6 md:px-12 bg-muted/30">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground">
+            Pricing that scales with you
           </h2>
-          <p className="text-muted-foreground text-lg">
-            Start free. Scale with your usage. Enterprise licensing available.
+          <p className="text-xl text-muted-foreground">
+            No hidden fees. No per-seat pricing. Just pay for the volume you process.
           </p>
+          
+          <div className="flex items-center justify-center gap-4 pt-4">
+             <Badge variant="secondary" className="text-sm py-1">Monthly</Badge>
+             <span className="text-sm text-muted-foreground">Annually (-20%)</span>
+          </div>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {plans.map((plan, index) => (
+          {plans.map((plan, i) => (
             <div 
-              key={index}
-              className={`p-6 rounded-xl border flex flex-col h-full ${
-                plan.popular 
-                  ? "border-primary/50 bg-card glow-primary" 
-                  : "border-border bg-card"
-              } transition-all duration-300 relative`}
+              key={i} 
+              className={`relative flex flex-col p-8 rounded-2xl bg-card border ${plan.popular ? 'border-primary shadow-2xl shadow-primary/10' : 'border-border'} transition-all hover:translate-y-[-4px]`}
             >
               {plan.popular && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-primary text-primary-foreground text-sm rounded-full font-medium">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
                   Most Popular
                 </div>
               )}
-              
-              <div className="mb-auto">
-                <h3 className="text-2xl font-medium tracking-tighter mb-1 text-foreground">{plan.name}</h3>
-                
-                <div className="mb-4">
-                  <div className="text-3xl font-bold tracking-tighter text-foreground">{plan.price} <span className="text-base font-normal text-muted-foreground">{plan.period}</span></div>
+
+              <div className="mb-8">
+                <h3 className="text-lg font-medium text-muted-foreground mb-2">{plan.name}</h3>
+                <div className="flex items-baseline gap-1 mb-4">
+                  <span className="text-4xl font-bold text-foreground">{plan.price}</span>
+                  <span className="text-muted-foreground">{plan.period}</span>
                 </div>
-                
-                <p className="text-muted-foreground mb-6">{plan.description}</p>
-                
-                <div className="space-y-3 mb-8">
-                  {plan.features.map((feature, i) => (
-                    <div key={i} className="flex items-center gap-3">
-                      <div className="h-5 w-5 rounded-full bg-primary/20 flex items-center justify-center text-primary">
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M5 12L10 17L19 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
-                      </div>
-                      <span className="text-sm text-foreground">{feature}</span>
+                <p className="text-sm text-muted-foreground">{plan.description}</p>
+              </div>
+
+              <div className="space-y-4 mb-8 flex-1">
+                {plan.features.map((feature, idx) => (
+                  <div key={idx} className="flex items-start gap-3">
+                    <div className={`mt-0.5 w-5 h-5 rounded-full flex items-center justify-center ${plan.popular ? 'bg-primary/20 text-primary' : 'bg-muted text-muted-foreground'}`}>
+                      <Check className="w-3 h-3" />
                     </div>
-                  ))}
-                </div>
+                    <span className="text-sm text-foreground">{feature}</span>
+                  </div>
+                ))}
               </div>
-              
-              <div className="mt-6">
-                <a href={plan.buttonHref}>
-                  <Button 
-                    className={plan.popular ? "w-full" : "w-full"}
-                    variant={plan.popular ? "default" : "outline"}
-                  >
-                    {plan.buttonText}
-                  </Button>
-                </a>
-              </div>
+
+              <Button 
+                variant={plan.popular ? 'default' : 'outline'} 
+                className={`w-full ${plan.popular ? 'bg-primary hover:bg-primary/90' : ''}`}
+              >
+                {plan.cta}
+              </Button>
             </div>
           ))}
         </div>
-        
-        <div className="text-center text-muted-foreground">
-          Need a custom deployment? <a href="#contact" className="text-primary hover:underline">Talk to sales</a>
+
+        <div className="mt-16 p-8 rounded-2xl bg-card border border-border flex flex-col md:flex-row items-center justify-between gap-8">
+           <div className="space-y-2">
+             <h3 className="text-lg font-bold text-foreground">Startups get $50k in credits</h3>
+             <p className="text-muted-foreground">Backed by YC, Techstars, or Sequoia? Apply for our startup program.</p>
+           </div>
+           <Button variant="secondary">Apply for Credits</Button>
         </div>
       </div>
     </section>

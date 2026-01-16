@@ -6,21 +6,23 @@ import Features from '@/components/Features';
 import Testimonials from '@/components/Testimonials';
 import Pricing from '@/components/Pricing';
 import Footer from '@/components/Footer';
-import SocialProof from '@/components/SocialProof';
+import DashboardPreview from '@/components/DashboardPreview'; // Acting as CTA
 import FAQ from '@/components/FAQ';
 import Contact from '@/components/Contact';
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex flex-col bg-background text-foreground">
+    <div className="min-h-screen flex flex-col bg-background text-foreground overflow-x-hidden">
       <Header />
-      <main>
+      <main className="flex-1">
         <HeroSection />
-        <SocialProof />
+        {/* SocialProof removed or merged into Hero/Testimonials to reduce clutter per new spec intent */}
         <Features />
-        <Testimonials />
+        {/* Entitlement Engine or "How it works" is handled inside Features "Deep Dive" */}
         <Pricing />
+        <Testimonials />
         <FAQ />
+        <DashboardPreview /> {/* This is now the "Ready to monetize?" CTA section */}
         <Contact />
       </main>
       <Footer />

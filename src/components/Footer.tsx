@@ -4,80 +4,64 @@ import Logo from './Logo';
 
 const Footer = () => {
   return (
-    <footer className="w-full py-16 px-6 md:px-12 border-t border-border bg-card">
+    <footer className="w-full py-16 px-6 md:px-12 bg-card border-t border-border">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-10">
-          <div className="md:col-span-2 space-y-6">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+          <div className="col-span-1 md:col-span-1 space-y-4">
             <Logo />
-            <p className="text-muted-foreground max-w-xs">
-              Context Engine is the secure context layer for your code and docs—fast APIs, powerful search, and enterprise‑grade security.
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              The precise usage-based billing platform for modern SaaS and AI companies.
             </p>
-            <div className="flex items-center gap-4">
-              <a href="#" className="h-10 w-10 rounded-full bg-muted flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors" aria-label="Twitter">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M23 3.01s-2.018 1.192-3.14 1.53a4.48 4.48 0 00-7.86 3v1a10.66 10.66 0 01-9-4.53s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5 0-.278-.028-.556-.08-.83C21.94 5.674 23 3.01 23 3.01z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </a>
-              <a href="#" className="h-10 w-10 rounded-full bg-muted flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors" aria-label="LinkedIn">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  <path d="M2 9h4v12H2z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  <circle cx="4" cy="4" r="2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </a>
-              <a href="#" className="h-10 w-10 rounded-full bg-muted flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors" aria-label="Facebook">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3V2z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </a>
-              <a href="#" className="h-10 w-10 rounded-full bg-muted flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors" aria-label="YouTube">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2c.313-1.732.467-3.482.46-5.33a29.005 29.005 0 00-.46-5.33z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  <path d="M9.75 15.02l5.75-3.27-5.75-3.27v6.54z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </a>
+            <div className="flex gap-4">
+              {/* Social icons (placeholder) */}
+              <div className="w-8 h-8 rounded bg-muted/50 flex items-center justify-center hover:bg-primary/20 transition-colors cursor-pointer">
+                <span className="sr-only">Twitter</span>
+                <svg className="w-4 h-4 text-foreground" fill="currentColor" viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
+              </div>
+              <div className="w-8 h-8 rounded bg-muted/50 flex items-center justify-center hover:bg-primary/20 transition-colors cursor-pointer">
+                <span className="sr-only">GitHub</span>
+                <svg className="w-4 h-4 text-foreground" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02a9.56 9.56 0 015 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.17 22 16.42 22 12A10 10 0 0012 2z"/></svg>
+              </div>
             </div>
           </div>
           
-          <div className="space-y-4">
-            <h4 className="font-medium text-lg text-foreground">Product</h4>
-            <ul className="space-y-3">
-              <li><a href="#features" className="text-muted-foreground hover:text-foreground transition-colors">Features</a></li>
-              <li><a href="#pricing" className="text-muted-foreground hover:text-foreground transition-colors">Pricing</a></li>
-              <li><a href="#faq" className="text-muted-foreground hover:text-foreground transition-colors">FAQ</a></li>
-              <li><a href="#contact" className="text-muted-foreground hover:text-foreground transition-colors">Contact</a></li>
+          <div>
+            <h4 className="font-semibold text-foreground mb-4">Product</h4>
+            <ul className="space-y-2 text-sm text-muted-foreground">
+              <li><a href="#" className="hover:text-primary transition-colors">Metering</a></li>
+              <li><a href="#" className="hover:text-primary transition-colors">Pricing Engine</a></li>
+              <li><a href="#" className="hover:text-primary transition-colors">Entitlements</a></li>
+              <li><a href="#" className="hover:text-primary transition-colors">Integrations</a></li>
             </ul>
           </div>
-          
-          <div className="space-y-4">
-            <h4 className="font-medium text-lg text-foreground">Company</h4>
-            <ul className="space-y-3">
-              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">About</a></li>
-              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Blog</a></li>
-              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Careers</a></li>
-              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Press</a></li>
-              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Security & Compliance</a></li>
+
+          <div>
+            <h4 className="font-semibold text-foreground mb-4">Developers</h4>
+            <ul className="space-y-2 text-sm text-muted-foreground">
+              <li><a href="#" className="hover:text-primary transition-colors">Documentation</a></li>
+              <li><a href="#" className="hover:text-primary transition-colors">API Reference</a></li>
+              <li><a href="#" className="hover:text-primary transition-colors">Status</a></li>
+              <li><a href="#" className="hover:text-primary transition-colors">SDKs</a></li>
             </ul>
           </div>
-          
-          <div className="space-y-4">
-            <h4 className="font-medium text-lg text-foreground">Resources</h4>
-            <ul className="space-y-3">
-              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Documentation</a></li>
-              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">API Reference</a></li>
-              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Guides & Tutorials</a></li>
-              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Status</a></li>
-              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Community</a></li>
+
+          <div>
+            <h4 className="font-semibold text-foreground mb-4">Company</h4>
+            <ul className="space-y-2 text-sm text-muted-foreground">
+              <li><a href="#" className="hover:text-primary transition-colors">About</a></li>
+              <li><a href="#" className="hover:text-primary transition-colors">Blog</a></li>
+              <li><a href="#" className="hover:text-primary transition-colors">Careers</a></li>
+              <li><a href="#" className="hover:text-primary transition-colors">Contact</a></li>
             </ul>
           </div>
         </div>
-        
-        <div className="mt-16 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center text-muted-foreground text-sm">
-          <div>© 2025 Context Engine. All rights reserved.</div>
-          <div className="flex gap-6 mt-4 md:mt-0">
-            <a href="#" className="hover:text-foreground transition-colors">Privacy</a>
-            <a href="#" className="hover:text-foreground transition-colors">Terms</a>
-            <a href="#" className="hover:text-foreground transition-colors">Security</a>
+
+        <div className="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-muted-foreground">
+          <p>© 2025 Metrix Inc. All rights reserved.</p>
+          <div className="flex gap-6">
+            <a href="#" className="hover:text-foreground">Privacy Policy</a>
+            <a href="#" className="hover:text-foreground">Terms of Service</a>
+            <a href="#" className="hover:text-foreground">Security</a>
           </div>
         </div>
       </div>
