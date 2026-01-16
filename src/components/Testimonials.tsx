@@ -41,7 +41,7 @@ const Testimonials = () => {
   const scroll = (direction: 'left' | 'right') => {
     if (scrollRef.current) {
       const { current } = scrollRef;
-      const scrollAmount = direction === 'left' ? -400 : 400;
+      const scrollAmount = direction === 'left' ? -340 : 340; // Adjusted scroll amount
       current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
     }
   };
@@ -87,13 +87,13 @@ const Testimonials = () => {
         {/* Scrolling Container */}
         <div 
           ref={scrollRef}
-          className="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory scrollbar-hide -mx-6 px-6 md:mx-0 md:px-0"
+          className="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory scrollbar-hide -mx-6 px-6 md:mx-0 md:px-0 w-[calc(100%+3rem)] md:w-full"
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
           {testimonials.map((t, i) => (
             <div 
               key={i} 
-              className="min-w-[85vw] md:min-w-[400px] flex-shrink-0 snap-center group relative p-8 rounded-3xl bg-card/40 border border-border/60 hover:border-primary/30 hover:bg-card/80 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/5 overflow-hidden"
+              className="min-w-[300px] sm:min-w-[350px] md:min-w-[400px] flex-shrink-0 snap-center group relative p-8 rounded-3xl bg-card/40 border border-border/60 hover:border-primary/30 hover:bg-card/80 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/5 overflow-hidden"
             >
               {/* Gradient overlay on hover */}
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
@@ -123,6 +123,8 @@ const Testimonials = () => {
               </div>
             </div>
           ))}
+          {/* Spacer to ensure last item is fully visible when scrolled to end on mobile */}
+          <div className="w-1 md:hidden flex-shrink-0" />
         </div>
 
         {/* Logos Section */}

@@ -114,8 +114,12 @@ const Integrations = () => {
             </div>
           </div>
           
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center z-30">
-             <p className="text-sm font-mono text-muted-foreground">WEBHOOKS • EVENTS • API • SDK</p>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 w-full max-w-[90%] md:max-w-none flex justify-center">
+             <div className="px-6 py-2 bg-background/80 backdrop-blur-md border border-border rounded-full shadow-lg">
+                <p className="text-xs md:text-sm font-mono font-medium text-foreground text-center whitespace-nowrap overflow-hidden text-ellipsis">
+                  WEBHOOKS • EVENTS • API • SDK
+                </p>
+             </div>
           </div>
         </div>
       </div>
