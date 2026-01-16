@@ -3,12 +3,14 @@ import React from 'react';
 import Header from '@/components/Header';
 import HeroSection from '@/components/HeroSection';
 import Features from '@/components/Features';
-import Testimonials from '@/components/Testimonials';
+import Integrations from '@/components/Integrations'; // New Section
 import Pricing from '@/components/Pricing';
-import Footer from '@/components/Footer';
-import DashboardPreview from '@/components/DashboardPreview'; // Acting as CTA
+import Testimonials from '@/components/Testimonials';
+import SecurityTrust from '@/components/SecurityTrust'; // New Section
+import DashboardPreview from '@/components/DashboardPreview';
 import FAQ from '@/components/FAQ';
 import Contact from '@/components/Contact';
+import Footer from '@/components/Footer';
 
 const Index = () => {
   return (
@@ -16,13 +18,13 @@ const Index = () => {
       <Header />
       <main className="flex-1">
         <HeroSection />
-        {/* SocialProof removed or merged into Hero/Testimonials to reduce clutter per new spec intent */}
         <Features />
-        {/* Entitlement Engine or "How it works" is handled inside Features "Deep Dive" */}
+        <Integrations /> {/* Placed after Features to show ecosystem fit */}
         <Pricing />
         <Testimonials />
+        <SecurityTrust /> {/* Placed before CTA to build final trust layer */}
         <FAQ />
-        <DashboardPreview /> {/* This is now the "Ready to monetize?" CTA section */}
+        <DashboardPreview />
         <Contact />
       </main>
       <Footer />
