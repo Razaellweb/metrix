@@ -1,26 +1,71 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-mono);
+  
+  --color-brand-primary: #635bff;
+  --color-brand-secondary: #0a2540;
+  
+  --color-canvas: #f7f9fb;
+  --color-canvas-dark: #0b0e11;
+  
+  --color-foreground: #111827;
+  --color-foreground-muted: #4b5563;
+  
+  --color-border-subtle: rgba(0, 0, 0, 0.06);
+  --color-border-strong: rgba(0, 0, 0, 0.12);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+:root {
+  --background: #f7f9fb;
+  --foreground: #111827;
+  --brand: #635bff;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0b0e11;
+    --foreground: #f3f4f6;
+    --brand: #818cf8; /* Slightly lighter for dark mode visibility */
   }
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Swiss Precision Utilities */
+.swiss-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+}
+
+@media (prefers-color-scheme: dark) {
+  .swiss-grid {
+    background-image: 
+      linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  }
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+@media (prefers-color-scheme: dark) {
+  .glass-panel {
+    background: rgba(11, 14, 17, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+}
+
+.mono-number {
+  font-feature-settings: "tnum" on, "zero" on;
+  font-family: var(--font-mono);
 }
